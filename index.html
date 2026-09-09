@@ -73,7 +73,6 @@ body {
   filter: drop-shadow(0 0 25px rgba(0,212,255,0.7)) drop-shadow(0 0 40px rgba(255,0,110,0.3));
 }
 
-/* Outer ring with lens markings - rotates on hover */
 .logo-outer-ring {
   transform-origin: 50px 50px;
   animation: logoRotate 30s linear infinite;
@@ -89,7 +88,6 @@ body {
   to { transform: rotate(360deg); }
 }
 
-/* Inner aperture blades - subtle rotation */
 .logo-aperture {
   transform-origin: 50px 50px;
   animation: apertureRotate 20s linear infinite reverse;
@@ -100,7 +98,6 @@ body {
   to { transform: rotate(360deg); }
 }
 
-/* Pulsing glow */
 .logo-glow {
   animation: logoPulseGlow 3s ease-in-out infinite;
 }
@@ -110,7 +107,6 @@ body {
   50% { opacity: 0.7; }
 }
 
-/* Letter A shimmer */
 .logo-letter-a {
   animation: letterShimmer 4s ease-in-out infinite;
 }
@@ -120,7 +116,6 @@ body {
   50% { filter: drop-shadow(0 0 8px rgba(255,0,110,0.8)); }
 }
 
-/* Preloader logo - larger version */
 .preloader-logo-container {
   width: 140px;
   height: 140px;
@@ -1243,10 +1238,6 @@ footer p {
   .cases-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
-  .floating-object {
-    display: none;
-  }
 }
 
 @media (max-width: 768px) {
@@ -1299,6 +1290,31 @@ footer p {
   
   .nav-logo-text {
     display: none;
+  }
+  
+  /* ADJUST FLOATING OBJECTS FOR MOBILE - KEEP THEM VISIBLE */
+  .floating-object {
+    opacity: 0.05;
+  }
+  
+  .floating-object:nth-child(1),
+  .floating-object:nth-child(2),
+  .floating-object:nth-child(3),
+  .floating-object:nth-child(4),
+  .floating-object:nth-child(5),
+  .floating-object:nth-child(6) {
+    width: 80px;
+    height: 80px;
+  }
+  
+  /* ADJUST TOP SCENE FOR MOBILE */
+  .top-scene {
+    height: 80px;
+  }
+  
+  .scene-item img {
+    width: 50px;
+    height: 50px;
   }
 }
 
