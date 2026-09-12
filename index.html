@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Northlight Studio — Reels Production</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,11 +20,12 @@
   --fs:'Space Grotesk',system-ui,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
-html{scroll-behavior:smooth}
-body{font-family:var(--fb);background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.6;cursor:none}
+html{scroll-behavior:smooth;overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{font-family:var(--fb);background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.6;cursor:none;touch-action:manipulation}
 body.loading{overflow:hidden}
 ::selection{background:var(--a1);color:#06201c}
 img,video{display:block;max-width:100%}
+a,button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 section{scroll-margin-top:70px}
 a:focus-visible,button:focus-visible{outline:2px solid var(--a1);outline-offset:3px;border-radius:4px}
 .svg-defs{position:absolute;top:0;left:0;width:0;height:0;overflow:hidden}
@@ -35,23 +36,19 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--a1);outline-offset:
 .aura-a{background:rgba(45,212,191,.1)}
 .aura-b{background:rgba(129,140,248,.1)}
 
-/* ЛОГО-БОКС */
+/* ЛОГО: везде ОДИН И ТОТ ЖЕ файл, что на ПК */
 .logo-box{position:relative;display:inline-flex;width:42px;height:42px;flex-shrink:0}
 .logo-box img,.logo-box svg.fb{width:100%;height:100%;border-radius:12px;box-shadow:0 0 22px rgba(45,212,191,.22);object-fit:cover}
 .logo-box svg.fb{display:none;filter:drop-shadow(0 0 10px rgba(45,212,191,.35))}
-@media (max-width:768px){
-  .logo-box img{display:none!important}
-  .logo-box svg.fb{display:block!important}
-}
 
 /* cursor */
 .cur-ring{position:fixed;top:0;left:0;width:36px;height:36px;border:1px solid rgba(124,232,213,.5);border-radius:50%;pointer-events:none;z-index:9999;transition:width .45s var(--ease),height .45s var(--ease),background .45s,border-color .45s;will-change:transform}
 .cur-ring.hover{width:62px;height:62px;background:rgba(45,212,191,.1);border-color:var(--a1)}
 .cur-dot{position:fixed;top:0;left:0;width:4px;height:4px;border-radius:50%;background:var(--acc-text);pointer-events:none;z-index:9999;will-change:transform;box-shadow:0 0 10px rgba(45,212,191,.7)}
 
-/* ============ PRELOADER: ТВОЙ ФАЙЛ, ЦЕНТР НАМЕРТВО, СКРОЛЛ ЗАБЛОКИРОВАН ============ */
+/* PRELOADER: прибит ко всем 4 краям, центр намертво */
 .preloader{
-  position:fixed;top:0;left:0;width:100vw;height:100vh;
+  position:fixed;top:0;left:0;right:0;bottom:0;height:auto;
   background:var(--bg);z-index:10000;
   transition:opacity .8s var(--ease),visibility .8s;
 }
@@ -69,7 +66,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--a1);outline-offset:
   animation:floatLogo 3.4s ease-in-out infinite;
 }
 .pre-logo img{width:100%;height:100%;object-fit:cover;border-radius:24px}
-.pre-logo svg.fb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:120px;height:120px;border-radius:28px;object-fit:initial}
+.pre-logo svg.fb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:120px;height:120px;border-radius:28px}
 @keyframes floatLogo{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .pre-word{font-family:var(--fs);font-size:.72rem;letter-spacing:.5em;text-transform:uppercase;color:var(--muted);padding-left:.5em}
 .pre-bar{width:190px;height:1px;background:rgba(255,255,255,.1);overflow:hidden}
@@ -78,7 +75,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--a1);outline-offset:
 
 /* chrome */
 .progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3));z-index:1001;opacity:.9}
-.nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:1rem 2.2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(14,14,18,.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--line);transform:translateY(-110%);transition:transform .6s var(--ease)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:1rem 2.2rem;padding-top:calc(1rem + env(safe-area-inset-top,0px));display:flex;justify-content:space-between;align-items:center;background:rgba(14,14,18,.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--line);transform:translateY(-110%);transition:transform .6s var(--ease)}
 .nav.visible{transform:translateY(0)}
 .nav-logo{display:flex;align-items:center;gap:.85rem;text-decoration:none}
 .nav-logo b{font-family:var(--fs);font-weight:600;font-size:.85rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);display:flex;align-items:baseline;gap:.55rem}
@@ -205,7 +202,7 @@ section{padding:9rem 2rem;position:relative}
 .proc-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:5rem;margin-top:4rem}
 .proc-left{position:sticky;top:110px;height:fit-content}
 .proc-left p{color:var(--muted);font-weight:300;line-height:1.85;margin-top:1.4rem;max-width:340px}
-.pstep{display:flex;gap:2.2rem;align-items:flex-start;padding:2.9rem 0;border-top:1px solid var(--line);transition:padding-left .4s var(--ease),filter .2s;will-change:transform}
+.pstep{display:flex;gap:2.2rem;align-items:flex-start;padding:2.9rem 0;border-top:1px solid var(--line);transition:padding-left .4s var(--ease),filter .2s}
 .pstep:active{filter:brightness(1.25)}
 .pstep:last-child{border-bottom:1px solid var(--line)}
 .pstep-num{font-family:var(--fd);font-size:3rem;font-weight:400;color:transparent;-webkit-text-stroke:1px rgba(45,212,191,.6);line-height:1;flex-shrink:0;width:4.6rem}
@@ -261,7 +258,7 @@ footer p{color:var(--muted);font-size:.82rem;font-weight:300;letter-spacing:.06e
   body{cursor:auto}
   .cur-ring,.cur-dot{display:none}
   .nav-links{display:none}
-  .nav{transform:none;padding:.8rem 1.2rem}
+  .nav{transform:none;padding:.8rem 1.2rem;padding-top:calc(.8rem + env(safe-area-inset-top,0px))}
   section{padding:6rem 1.4rem}
   .hero{padding:5.5rem 1.4rem 2rem}
   .rec{top:4.6rem;left:1.4rem}
@@ -275,7 +272,7 @@ footer p{color:var(--muted);font-size:.82rem;font-weight:300;letter-spacing:.06e
   .scard{top:calc(60px + var(--i)*10px);padding:2.4rem 1.6rem;margin-bottom:1.3rem}
   .scroll-badge{width:88px;height:88px}
   .nav-logo b span{display:none}
-  .pre-logo{width:80vw}
+  .pre-logo{width:min(80vw,360px)}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
@@ -288,7 +285,7 @@ footer p{color:var(--muted);font-size:.82rem;font-weight:300;letter-spacing:.06e
 </head>
 <body class="loading">
 
-<!-- ВЕКТОРНЫЙ ЛОГО-СИМВОЛ (только как последний фолбэк) -->
+<!-- ВЕКТОРНЫЙ СИМВОЛ — только аварийный фолбэк -->
 <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <symbol id="nllogo" viewBox="0 0 96 96">
     <defs>
@@ -315,11 +312,11 @@ footer p{color:var(--muted);font-size:.82rem;font-weight:300;letter-spacing:.06e
 <div class="cur-ring" id="curRing"></div>
 <div class="cur-dot" id="curDot"></div>
 
-<!-- PRELOADER: ТВОЙ ФАЙЛ ПЕРВЫМ -->
+<!-- PRELOADER -->
 <div class="preloader" id="preloader">
   <div class="pre-center">
     <div class="pre-logo">
-      <img src="1789214407.png" alt="" onerror="this.onerror=function(){this.style.display='none';this.nextElementSibling.style.display='block'};this.src='logo.png';">
+      <img src="1789214407.png" alt="" width="360" height="203" onerror="this.onerror=function(){this.style.display='none';this.nextElementSibling.style.display='block'};this.src='logo.png';">
       <svg class="fb" style="display:none" viewBox="0 0 96 96"><use href="#nllogo" xlink:href="#nllogo"/></svg>
     </div>
     <div class="pre-word">Northlight Studio</div>
@@ -559,7 +556,7 @@ footer p{color:var(--muted);font-size:.82rem;font-weight:300;letter-spacing:.06e
 (function(){
 'use strict';
 
-/* СКРОЛЛ: всегда открываемся сверху, ничто не убегает */
+/* скролл: всегда сверху, ничего не убегает */
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 window.scrollTo(0, 0);
 
@@ -688,7 +685,7 @@ document.querySelectorAll('.lang button').forEach(function(b){
   });
 });
 
-/* прелоадер: разблокирует скролл и сбрасывает наверх */
+/* прелоадер */
 var pre = document.getElementById('preloader'), preHidden = false;
 function hidePre(){
   if (preHidden) return;
@@ -773,8 +770,6 @@ document.querySelectorAll('.work-media').forEach(function(m){
   var img = m.querySelector('img');
   if (img) workImgs.push({ el: m, img: img });
 });
-var coarse = window.matchMedia('(pointer:coarse)').matches;
-var movers = [].slice.call(document.querySelectorAll('.scard, .pstep'));
 
 function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
 
@@ -795,18 +790,6 @@ function frame(){
       if (r.bottom < -300 || r.top > vh + 300) continue;
       var mid = (r.top + r.height/2 - vh/2) / vh;
       w.img.style.transform = 'translateY(' + (mid*-38) + 'px) scale(1.2)';
-    }
-
-    if (coarse){
-      for (var m = 0; m < movers.length; m++){
-        var el = movers[m];
-        var rr = el.getBoundingClientRect();
-        if (rr.bottom < -200 || rr.top > vh + 200) continue;
-        var pr = clamp((vh - rr.top) / (vh + rr.height), 0, 1);
-        var rot = (0.5 - pr) * 5;
-        var ty = (0.5 - pr) * -16;
-        el.style.transform = 'perspective(900px) rotateX(' + rot.toFixed(2) + 'deg) translateY(' + ty.toFixed(1) + 'px)';
-      }
     }
 
     var hr = hlEl.getBoundingClientRect();
@@ -834,7 +817,7 @@ var io = new IntersectionObserver(function(entries){
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
 
-/* спотлайт + tilt (мышь) */
+/* спотлайт + tilt (только мышь) */
 var finePointer = window.matchMedia('(pointer:fine)').matches;
 document.querySelectorAll('.scard').forEach(function(card){
   card.addEventListener('mousemove', function(e){
@@ -850,7 +833,7 @@ document.querySelectorAll('.scard').forEach(function(card){
   card.addEventListener('mouseleave', function(){ card.style.transform = ''; });
 });
 
-/* магнитные + курсор */
+/* магнитные + курсор (только мышь) */
 if (finePointer && !reduced){
   document.querySelectorAll('.magnetic').forEach(function(el){
     el.addEventListener('mousemove', function(e){
