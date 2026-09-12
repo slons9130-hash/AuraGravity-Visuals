@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>Northlight Studio — Reels Production</title>
 <link rel="preload" as="image" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,7 +51,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--a1);offset:3px;bord
 .cur-dot{position:fixed;top:0;left:0;width:4px;height:4px;border-radius:50%;background:var(--acc-text);pointer-events:none;z-index:9999;will-change:transform;box-shadow:0 0 10px rgba(45,212,191,.7)}
 .cur-trail{position:fixed;top:0;left:0;border-radius:50%;pointer-events:none;z-index:9998;will-change:transform}
 
-/* PRELOADER: держится 2.8 сек, полоска ползёт 2.6 сек равномерно */
+/* PRELOADER: полоска 2.1с равномерно, экран держится 2.3с */
 .preloader{
   position:fixed;top:0;left:0;right:0;bottom:0;height:auto;
   background:var(--bg);z-index:10000;
@@ -83,7 +86,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--a1);offset:3px;bord
 .pre-word{font-family:var(--fs);font-size:.72rem;letter-spacing:.5em;text-transform:uppercase;color:var(--muted);padding-left:.5em;animation:wordBreath 2.6s ease-in-out infinite}
 @keyframes wordBreath{0%,100%{opacity:.55;letter-spacing:.5em}50%{opacity:1;letter-spacing:.56em}}
 .pre-bar{width:190px;height:1px;background:rgba(255,255,255,.1);overflow:hidden;position:relative}
-.pre-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a1),var(--a3));animation:loadbar 2.6s linear forwards;box-shadow:0 0 12px var(--a1)}
+.pre-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a1),var(--a3));animation:loadbar 2.1s linear forwards;box-shadow:0 0 12px var(--a1)}
 @keyframes loadbar{to{width:100%}}
 
 /* chrome */
@@ -707,12 +710,12 @@ document.querySelectorAll('.lang button').forEach(function(b){
   });
 });
 
-/* ПРЕЛОАДЕР: полоска ползёт 2.6с равномерно, экран держится 2.8с, страховка 4.2с */
+/* ПРЕЛОАДЕР: полоска 2.1с равномерно, экран 2.3с, страховка 3.5с — ОДИНАКОВО на ПК и телефоне */
 var pre = document.getElementById('preloader');
 var heroVideo = document.getElementById('heroVideo');
 var preImg = document.getElementById('preImg');
-var MIN_SHOW = 2800;
-var CAP = 4200;
+var MIN_SHOW = 2300;
+var CAP = 3500;
 var t0 = Date.now();
 var logoReady = false;
 var fired = false;
