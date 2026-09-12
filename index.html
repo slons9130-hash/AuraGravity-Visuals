@@ -37,7 +37,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--a1);outline-offset:
 .aura-a{background:rgba(45,212,191,.1)}
 .aura-b{background:rgba(129,140,248,.1)}
 
-/* ЛОГО: жёсткий квадрат, фиксированные px, кроп сам убирает поля и знаки */
+/* ЛОГО: жёсткий квадрат, фикс px, кроп 1.15 срезирует поля и знаки */
 .logo-box{position:relative;display:inline-flex;width:44px;height:44px;flex-shrink:0;overflow:hidden;border-radius:12px}
 .logo-box img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center center;transform:scale(1.15);border-radius:12px;box-shadow:0 0 22px rgba(45,212,191,.22)}
 .logo-box svg.fb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:86%;height:86%;display:none;filter:drop-shadow(0 0 10px rgba(45,212,191,.35))}
@@ -48,7 +48,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--a1);outline-offset:
 .cur-dot{position:fixed;top:0;left:0;width:4px;height:4px;border-radius:50%;background:var(--acc-text);pointer-events:none;z-index:9999;will-change:transform;box-shadow:0 0 10px rgba(45,212,191,.7)}
 .cur-trail{position:fixed;top:0;left:0;border-radius:50%;pointer-events:none;z-index:9998;will-change:transform}
 
-/* PRELOADER */
+/* PRELOADER: держится минимум 2 сек */
 .preloader{
   position:fixed;top:0;left:0;right:0;bottom:0;height:auto;
   background:var(--bg);z-index:10000;
@@ -83,7 +83,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--a1);outline-offset:
 .pre-word{font-family:var(--fs);font-size:.72rem;letter-spacing:.5em;text-transform:uppercase;color:var(--muted);padding-left:.5em;animation:wordBreath 2.6s ease-in-out infinite}
 @keyframes wordBreath{0%,100%{opacity:.55;letter-spacing:.5em}50%{opacity:1;letter-spacing:.56em}}
 .pre-bar{width:190px;height:1px;background:rgba(255,255,255,.1);overflow:hidden;position:relative}
-.pre-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a1),var(--a3));animation:loadbar 1.6s var(--ease) forwards;box-shadow:0 0 12px var(--a1)}
+.pre-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a1),var(--a3));animation:loadbar 1.9s var(--ease) forwards;box-shadow:0 0 12px var(--a1)}
 @keyframes loadbar{to{width:100%}}
 
 /* chrome */
@@ -308,7 +308,7 @@ footer p{color:var(--muted);font-size:.82rem;font-weight:300;letter-spacing:.06e
 </head>
 <body class="loading">
 
-<!-- ВЕКТОРНЫЙ СИМВОЛ — аварийный фолбэк, если обоих файлов нет -->
+<!-- ВЕКТОРНЫЙ СИМВОЛ — аварийный фолбэк -->
 <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <symbol id="nllogo" viewBox="0 0 96 96">
     <defs>
@@ -707,12 +707,16 @@ document.querySelectorAll('.lang button').forEach(function(b){
   });
 });
 
-/* БЫСТРЫЙ прелоадер: уходит как только лого готов (мин 450мс), потолок 1.5с; видео стартует после */
+/* ПРЕЛОАДЕР: держится МИНИМУМ 2 секунды, потолок 3.2с если лого тупит */
 var pre = document.getElementById('preloader');
 var heroVideo = document.getElementById('heroVideo');
 var preImg = document.getElementById('preImg');
+var MIN_SHOW = 2000;
+var CAP = 3200;
 var t0 = Date.now();
+var logoReady = false;
 var fired = false;
+
 function openSite(){
   if (fired) return;
   fired = true;
@@ -726,18 +730,21 @@ function openSite(){
     if (p && p.catch) p.catch(function(){});
   }
 }
-function tryOpen(){
-  var wait = Math.max(0, 450 - (Date.now() - t0));
-  setTimeout(openSite, wait);
+function onLogoReady(){
+  logoReady = true;
+  var elapsed = Date.now() - t0;
+  if (elapsed >= MIN_SHOW) openSite();
+  /* иначе откроется ровно в 2000мс через таймер ниже */
 }
 if (preImg){
-  if (preImg.complete && preImg.naturalWidth > 0){ tryOpen(); }
+  if (preImg.complete && preImg.naturalWidth > 0){ onLogoReady(); }
   else {
-    preImg.addEventListener('load', tryOpen, { once: true });
-    preImg.addEventListener('error', tryOpen, { once: true });
+    preImg.addEventListener('load', onLogoReady, { once: true });
+    preImg.addEventListener('error', onLogoReady, { once: true });
   }
-} else { tryOpen(); }
-setTimeout(openSite, 1500);
+} else { logoReady = true; }
+setTimeout(openSite, MIN_SHOW);   /* ровно 2 сек, если лого уже готово */
+setTimeout(openSite, CAP);        /* страховка: максимум 3.2 сек */
 
 /* пылинки */
 var dustCanvas = document.getElementById('dust');
