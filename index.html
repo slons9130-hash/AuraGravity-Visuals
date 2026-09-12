@@ -219,6 +219,7 @@ section{padding:9rem 2rem;position:relative}
 .work-info p{color:var(--muted);font-weight:300;line-height:1.85;max-width:400px}
 .work-stat{display:inline-flex;align-items:center;gap:.7rem;margin-top:1.8rem;font-family:var(--fs);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc-text);border:1px solid rgba(45,212,191,.4);padding:.65rem 1.3rem;border-radius:999px;background:rgba(45,212,191,.07)}
 .work-stat i{width:6px;height:6px;border-radius:50%;background:var(--a1);font-style:normal;box-shadow:0 0 8px rgba(45,212,191,.8);animation:blink 2s ease-in-out infinite}
+.work-disclaimer{display:block;margin-top:.7rem;font-family:var(--fb);font-size:.72rem;color:var(--faint)}
 
 /* PROCESS */
 .proc-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:5rem;margin-top:4rem}
@@ -246,6 +247,7 @@ section{padding:9rem 2rem;position:relative}
 .prow-sum{font-family:var(--fd);font-weight:500;font-size:2.1rem;white-space:nowrap;color:var(--ink)}
 .prow-sum small{font-size:1rem;color:var(--acc-text);margin-left:.3rem}
 .prow .btn{padding:.95rem 2.2rem}
+.price-note{display:block;margin-top:1.6rem;font-family:var(--fb);font-size:.82rem;color:var(--muted);max-width:640px}
 
 /* buttons */
 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.7rem;padding:1.1rem 2.6rem;border-radius:999px;text-decoration:none;font-family:var(--fs);font-size:.8rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;border:none;cursor:pointer;overflow:hidden;transition:transform .5s cubic-bezier(.34,1.4,.64,1),box-shadow .5s var(--ease),border-color .4s,background .4s;will-change:transform}
@@ -269,6 +271,38 @@ section{padding:9rem 2rem;position:relative}
 
 footer{padding:3.2rem 2rem;border-top:1px solid var(--line);text-align:center}
 footer p{color:var(--muted);font-size:.82rem;font-weight:300;letter-spacing:.06em}
+.footer-legal{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.4rem;margin-bottom:1.1rem}
+.footer-legal button{background:none;border:none;padding:0;color:var(--muted);font-family:var(--fb);font-size:.82rem;text-decoration:underline;text-underline-offset:3px;cursor:pointer;transition:color .3s}
+.footer-legal button:hover{color:var(--acc-text)}
+.footer-company{color:var(--faint);font-size:.74rem;margin-top:.6rem;line-height:1.7}
+
+/* COOKIE BANNER */
+.cookie-bar{position:fixed;left:1rem;right:1rem;bottom:1rem;z-index:10050;max-width:760px;margin:0 auto;background:rgba(18,18,26,.97);border:1px solid var(--line);border-radius:20px;padding:1.6rem 1.8rem;box-shadow:0 24px 60px rgba(0,0,0,.5);backdrop-filter:blur(18px);display:flex;flex-direction:column;gap:1rem;transform:translateY(140%);opacity:0;transition:transform .6s var(--ease),opacity .6s var(--ease)}
+.cookie-bar.visible{transform:translateY(0);opacity:1}
+.cookie-bar p{font-size:.86rem;color:var(--muted);line-height:1.7;font-weight:300}
+.cookie-bar a{color:var(--acc-text);text-decoration:underline;text-underline-offset:3px}
+.cookie-actions{display:flex;flex-wrap:wrap;gap:.7rem}
+.cookie-actions .btn{padding:.75rem 1.5rem;font-size:.72rem}
+.cookie-settings-panel{display:none;flex-direction:column;gap:.7rem;border-top:1px solid var(--line);padding-top:1rem;margin-top:.2rem}
+.cookie-settings-panel.open{display:flex}
+.cookie-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;font-size:.82rem;color:var(--muted)}
+.cookie-row b{color:var(--ink);font-weight:500}
+.cookie-toggle{position:relative;width:42px;height:24px;border-radius:999px;background:rgba(255,255,255,.14);border:none;cursor:pointer;flex-shrink:0;transition:background .3s}
+.cookie-toggle::after{content:'';position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .3s}
+.cookie-toggle.on{background:var(--a1)}
+.cookie-toggle.on::after{transform:translateX(18px)}
+.cookie-toggle:disabled{opacity:.6;cursor:not-allowed}
+
+/* LEGAL MODALS */
+.legal-modal{position:fixed;inset:0;z-index:10100;display:none;align-items:flex-start;justify-content:center;padding:5vh 1rem;background:rgba(6,6,9,.72);backdrop-filter:blur(6px);overflow-y:auto}
+.legal-modal.open{display:flex}
+.legal-modal-box{background:var(--bg-3);border:1px solid var(--line);border-radius:24px;max-width:720px;width:100%;padding:2.6rem;box-shadow:0 40px 90px rgba(0,0,0,.5);margin-bottom:5vh}
+.legal-modal-box h2{font-family:var(--fd);font-size:1.7rem;margin-bottom:1.2rem;color:var(--ink)}
+.legal-modal-box h4{font-family:var(--fs);font-size:.85rem;letter-spacing:.06em;color:var(--acc-text);margin:1.3rem 0 .4rem}
+.legal-modal-box p,.legal-modal-box li{color:var(--muted);font-size:.9rem;line-height:1.8;font-weight:300}
+.legal-modal-box ul{padding-left:1.3rem;margin:.3rem 0}
+.legal-modal-box mark{background:rgba(45,212,191,.18);color:var(--acc-text);padding:.05em .3em;border-radius:4px;font-style:normal}
+.legal-close{margin-top:1.8rem}
 
 /* RESPONSIVE */
 @media (max-width:1023px){
@@ -299,6 +333,8 @@ footer p{color:var(--muted);font-size:.82rem;font-weight:300;letter-spacing:.06e
   .logo-box img{border-radius:10px}
   .pre-logo{width:136px;height:136px;border-radius:28px}
   .pre-logo img{border-radius:28px}
+  .cookie-bar{left:.6rem;right:.6rem;bottom:.6rem;padding:1.3rem}
+  .legal-modal-box{padding:1.8rem}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
@@ -476,6 +512,7 @@ footer p{color:var(--muted);font-size:.82rem;font-weight:300;letter-spacing:.06e
         <h3 data-i18n="cases.c1.title">Серия рекламных креативов</h3>
         <p data-i18n="cases.c1.desc">Формат коротких роликов под перфоманс-задачи: каждый ролик тестировался на удержание и конверсию.</p>
         <span class="work-stat"><i></i>CTR +240%</span>
+        <span class="work-disclaimer" data-i18n="cases.disclaimer">Результат по данным клиента за указанный период, не является гарантией аналогичных показателей.</span>
       </div>
     </article>
     <article class="work">
@@ -489,6 +526,7 @@ footer p{color:var(--muted);font-size:.82rem;font-weight:300;letter-spacing:.06e
         <h3 data-i18n="cases.c2.title">Ресторанный бренд</h3>
         <p data-i18n="cases.c2.desc">Контент-стратегия и съёмка внутри заведений: атмосфера, блюда, люди. Органический рост без бюджета на рекламу.</p>
         <span class="work-stat"><i></i>+50K подписчиков</span>
+        <span class="work-disclaimer" data-i18n="cases.disclaimer">Результат по данным клиента за указанный период, не является гарантией аналогичных показателей.</span>
       </div>
     </article>
     <article class="work">
@@ -502,6 +540,7 @@ footer p{color:var(--muted);font-size:.82rem;font-weight:300;letter-spacing:.06e
         <h3 data-i18n="cases.c3.title">Бренд одежды</h3>
         <p data-i18n="cases.c3.desc">Вирусный ролик на показе новой коллекции: хук на первой секунде + динамика монтажа под трек.</p>
         <span class="work-stat"><i></i>1M+ просмотров</span>
+        <span class="work-disclaimer" data-i18n="cases.disclaimer">Результат по данным клиента за указанный период, не является гарантией аналогичных показателей.</span>
       </div>
     </article>
   </div>
@@ -554,6 +593,7 @@ footer p{color:var(--muted);font-size:.82rem;font-weight:300;letter-spacing:.06e
         <div class="prow-sum">1 500<small>₽</small></div>
         <a href="#contact" class="btn btn-ghost magnetic"><span data-i18n="pricing.select">Выбрать</span></a>
       </div>
+      <span class="price-note" data-i18n="pricing.note">Цены указаны за 1 ролик при соответствующем объёме пакета. Точная стоимость и сроки фиксируются в договоре/счёте перед началом работ. Условия оплаты и возврата — см. «Политику возврата» в футере.</span>
     </div>
   </div>
 </section>
@@ -567,16 +607,100 @@ footer p{color:var(--muted);font-size:.82rem;font-weight:300;letter-spacing:.06e
         <p data-i18n="cta.desc">Созвонимся в Zoom: покажем примеры, обсудим формат и соберём план под ваш бюджет.</p>
       </div>
       <div class="cta-actions">
-        <a href="https://zoom.us" target="_blank" rel="noopener" class="btn btn-aur magnetic"><span data-i18n="cta.zoom">Созвониться в Zoom</span><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
-        <a href="https://t.me" target="_blank" rel="noopener" class="btn btn-ghost magnetic"><span data-i18n="cta.telegram">Написать в Telegram</span></a>
+        <a href="https://zoom.us" target="_blank" rel="noopener noreferrer" class="btn btn-aur magnetic"><span data-i18n="cta.zoom">Созвониться в Zoom</span><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+        <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="btn btn-ghost magnetic"><span data-i18n="cta.telegram">Написать в Telegram</span></a>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
+  <div class="footer-legal">
+    <button type="button" data-legal="privacy" data-i18n="footer.privacy">Политика конфиденциальности</button>
+    <button type="button" data-legal="terms" data-i18n="footer.terms">Условия использования</button>
+    <button type="button" data-legal="cookies" data-i18n="footer.cookies">Политика cookie</button>
+    <button type="button" data-legal="refund" data-i18n="footer.refund">Политика возврата</button>
+    <button type="button" id="cookieReopen" data-i18n="footer.cookieSettings">Настройки cookie</button>
+  </div>
   <p>&copy; 2026 NORTHLIGHT STUDIO · <span data-i18n="footer.rights">Все права защищены</span></p>
+  <p class="footer-company" data-i18n="footer.company">
+    [Юридическое наименование, напр. ИП/ООО «Northlight Studio»] · [юридический адрес] · ОГРН/рег. №: [укажите] · contact@northlightstudio.example · [телефон]
+  </p>
 </footer>
+
+<!-- COOKIE BANNER -->
+<div class="cookie-bar" id="cookieBar" role="dialog" aria-live="polite" aria-label="Настройки cookie">
+  <p data-i18n="cookie.text">Мы используем только технически необходимые файлы cookie для корректной работы сайта (шрифты, видео, карты и т.п. подключаются к сторонним сервисам: Google Fonts, Unsplash, Mixkit, Zoom, Telegram). Аналитические и рекламные cookie не устанавливаются без вашего согласия. Подробнее — в <a href="#" data-legal="cookies">Политике cookie</a>.</p>
+  <div class="cookie-settings-panel" id="cookieSettingsPanel">
+    <div class="cookie-row"><span><b data-i18n="cookie.necessary.title">Необходимые</b><br><span data-i18n="cookie.necessary.desc">Всегда активны — обеспечивают базовую работу сайта.</span></span><button class="cookie-toggle on" disabled></button></div>
+    <div class="cookie-row"><span><b data-i18n="cookie.analytics.title">Аналитика</b><br><span data-i18n="cookie.analytics.desc">Сейчас не используется на сайте. Переключатель зарезервирован на будущее.</span></span><button class="cookie-toggle" id="toggleAnalytics" data-key="analytics"></button></div>
+  </div>
+  <div class="cookie-actions">
+    <button type="button" class="btn btn-aur" id="cookieAcceptAll" data-i18n="cookie.acceptAll">Принять всё</button>
+    <button type="button" class="btn btn-ghost" id="cookieRejectAll" data-i18n="cookie.rejectAll">Только необходимые</button>
+    <button type="button" class="btn btn-ghost" id="cookieCustomize" data-i18n="cookie.customize">Настроить</button>
+  </div>
+</div>
+
+<!-- LEGAL MODALS -->
+<div class="legal-modal" id="modalPrivacy">
+  <div class="legal-modal-box">
+    <h2 data-i18n="legal.privacy.h">Политика конфиденциальности</h2>
+    <p data-i18n="legal.privacy.p1">Настоящая Политика описывает, какие данные собирает сайт Northlight Studio (далее — «Сайт») и как они используются. <mark>Заполните разделы ниже реальными данными вашей компании и юрисдикции перед публикацией.</mark></p>
+    <h4 data-i18n="legal.privacy.h2">Какие данные собираются</h4>
+    <ul>
+      <li data-i18n="legal.privacy.li1">Сайт в текущей версии не содержит форм сбора персональных данных. Если вы добавите форму заявки/оплаты — данные (имя, контакт) будут обрабатываться только для ответа на запрос.</li>
+      <li data-i18n="legal.privacy.li2">Технически необходимые данные браузера (User-Agent, IP) могут передаваться сторонним сервисам при загрузке шрифтов (Google Fonts), изображений (Unsplash) и видео (Mixkit).</li>
+    </ul>
+    <h4 data-i18n="legal.privacy.h3">Сторонние сервисы</h4>
+    <p data-i18n="legal.privacy.p2">Google Fonts, Unsplash, Mixkit (доставка шрифтов/медиа), Zoom и Telegram (внешние ссылки для связи). Переходя по ним, вы попадаете на площадки с собственной политикой конфиденциальности.</p>
+    <h4 data-i18n="legal.privacy.h4">Ваши права</h4>
+    <p data-i18n="legal.privacy.p3">[Укажите права субъектов данных согласно применимому законодательству — например, GDPR (ЕС) или закону о персональных данных вашей страны] и контакт для обращений: [email оператора данных].</p>
+    <button type="button" class="btn btn-ghost legal-close" data-close>Закрыть</button>
+  </div>
+</div>
+
+<div class="legal-modal" id="modalTerms">
+  <div class="legal-modal-box">
+    <h2 data-i18n="legal.terms.h">Условия использования</h2>
+    <p data-i18n="legal.terms.p1">Используя Сайт, вы соглашаетесь с настоящими условиями. <mark>Замените текст ниже реальными условиями оказания услуг вашей студии.</mark></p>
+    <h4 data-i18n="legal.terms.h2">Услуги</h4>
+    <p data-i18n="legal.terms.p2">Northlight Studio оказывает услуги продакшна видео-контента (reels, рекламные креативы) на основании отдельного договора/счёта, согласованного с клиентом до начала работ.</p>
+    <h4 data-i18n="legal.terms.h3">Ответственность</h4>
+    <p data-i18n="legal.terms.p3">Результаты кейсов, приведённые на Сайте, основаны на данных клиентов за конкретный период и не являются гарантией аналогичного результата для других проектов.</p>
+    <h4 data-i18n="legal.terms.h4">Применимое право</h4>
+    <p data-i18n="legal.terms.p4">[Укажите страну и применимое право/юрисдикцию, а также порядок разрешения споров.]</p>
+    <button type="button" class="btn btn-ghost legal-close" data-close>Закрыть</button>
+  </div>
+</div>
+
+<div class="legal-modal" id="modalCookies">
+  <div class="legal-modal-box">
+    <h2 data-i18n="legal.cookies.h">Политика cookie</h2>
+    <p data-i18n="legal.cookies.p1">Сайт использует минимальный набор технически необходимых элементов для отображения контента. Собственные аналитические или рекламные cookie на данный момент не устанавливаются.</p>
+    <h4 data-i18n="legal.cookies.h2">Сторонняя загрузка ресурсов</h4>
+    <p data-i18n="legal.cookies.p2">При открытии Сайта браузер обращается к серверам Google (шрифты), Unsplash (изображения) и Mixkit (видео) — это может означать передачу IP-адреса указанным сервисам согласно их собственным политикам.</p>
+    <h4 data-i18n="legal.cookies.h3">Управление</h4>
+    <p data-i18n="legal.cookies.p3">Вы можете изменить решение в любой момент через кнопку «Настройки cookie» в футере сайта.</p>
+    <button type="button" class="btn btn-ghost legal-close" data-close>Закрыть</button>
+  </div>
+</div>
+
+<div class="legal-modal" id="modalRefund">
+  <div class="legal-modal-box">
+    <h2 data-i18n="legal.refund.h">Политика возврата</h2>
+    <p data-i18n="legal.refund.p1"><mark>Заполните реальными условиями вашей студии перед публикацией.</mark> Пример структуры ниже.</p>
+    <h4 data-i18n="legal.refund.h2">Предоплата и этапы</h4>
+    <p data-i18n="legal.refund.p2">Работа начинается после согласования технического задания и внесения предоплаты в размере [%], указанной в договоре/счёте.</p>
+    <h4 data-i18n="legal.refund.h3">Возврат средств</h4>
+    <ul>
+      <li data-i18n="legal.refund.li1">Если работы не начаты — предоплата возвращается в течение [N] рабочих дней за вычетом фактически понесённых расходов.</li>
+      <li data-i18n="legal.refund.li2">Если результат не соответствует согласованному ТЗ — предусмотрены бесплатные правки/переснятие согласно условиям тарифа, а не автоматический денежный возврат.</li>
+      <li data-i18n="legal.refund.li3">Споры по качеству решаются в порядке, указанном в договоре.</li>
+    </ul>
+    <button type="button" class="btn btn-ghost legal-close" data-close>Закрыть</button>
+  </div>
+</div>
 
 <script>
 (function(){
@@ -601,6 +725,7 @@ var T = {
     'cases.c1.title':'Серия рекламных креативов','cases.c1.desc':'Формат коротких роликов под перфоманс-задачи: каждый ролик тестировался на удержание и конверсию.',
     'cases.c2.title':'Ресторанный бренд','cases.c2.desc':'Контент-стратегия и съёмка внутри заведений: атмосфера, блюда, люди. Органический рост без бюджета на рекламу.',
     'cases.c3.title':'Бренд одежды','cases.c3.desc':'Вирусный ролик на показе новой коллекции: хук на первой секунде + динамика монтажа под трек.',
+    'cases.disclaimer':'Результат по данным клиента за указанный период, не является гарантией аналогичных показателей.',
     'process.tag':'Процесс','process.title':'Как рождается <em>ролик</em>','process.desc':'От брифа до готового файла — прозрачный процесс без сюрпризов и скрытых правок.',
     'process.s1.title':'Бриф и стратегия','process.s1.desc':'Созвон в Zoom: задачи, аудитория, KPI. Формируем концепцию и референсы под ваш бренд.',
     'process.s2.title':'Сценарий и hook','process.s2.desc':'Пишем сценарий с цепляющей первой секундой. Согласуем каждую деталь до съёмки.',
@@ -611,8 +736,16 @@ var T = {
     'pricing.p2.qty':'6–10 роликов · Популярный','pricing.p2.sub':'Всё из «Старт» + 3 правки + приоритет',
     'pricing.p3.qty':'11–20 роликов','pricing.p3.sub':'Безлимитные правки + менеджер',
     'pricing.p4.qty':'20+ роликов','pricing.p4.sub':'VIP · выделенная команда · аналитика',
+    'pricing.note':'Цены указаны за 1 ролик при соответствующем объёме пакета. Точная стоимость и сроки фиксируются в договоре/счёте перед началом работ. Условия оплаты и возврата — см. «Политику возврата» в футере.',
     'cta.title':'Готовы <em>начать</em>?','cta.desc':'Созвонимся в Zoom: покажем примеры, обсудим формат и соберём план под ваш бюджет.',
-    'cta.zoom':'Созвониться в Zoom','cta.telegram':'Написать в Telegram','footer.rights':'Все права защищены'
+    'cta.zoom':'Созвониться в Zoom','cta.telegram':'Написать в Telegram','footer.rights':'Все права защищены',
+    'footer.privacy':'Политика конфиденциальности','footer.terms':'Условия использования','footer.cookies':'Политика cookie','footer.refund':'Политика возврата','footer.cookieSettings':'Настройки cookie',
+    'footer.company':'[Юридическое наименование, напр. ИП/ООО «Northlight Studio»] · [юридический адрес] · ОГРН/рег. №: [укажите] · contact@northlightstudio.example · [телефон]',
+    'cookie.text':'Мы используем только технически необходимые файлы cookie для корректной работы сайта (шрифты, видео, карты и т.п. подключаются к сторонним сервисам: Google Fonts, Unsplash, Mixkit, Zoom, Telegram). Аналитические и рекламные cookie не устанавливаются без вашего согласия. Подробнее — в Политике cookie.',
+    'cookie.necessary.title':'Необходимые','cookie.necessary.desc':'Всегда активны — обеспечивают базовую работу сайта.',
+    'cookie.analytics.title':'Аналитика','cookie.analytics.desc':'Сейчас не используется на сайте. Переключатель зарезервирован на будущее.',
+    'cookie.acceptAll':'Принять всё','cookie.rejectAll':'Только необходимые','cookie.customize':'Настроить',
+    'legal.privacy.h':'Политика конфиденциальности'
   },
   en:{
     'nav.services':'Services','nav.cases':'Cases','nav.pricing':'Pricing','nav.contact':'Contact',
@@ -629,6 +762,7 @@ var T = {
     'cases.c1.title':'Ad creative series','cases.c1.desc':'Short-form videos for performance goals: every piece tested for retention and conversion.',
     'cases.c2.title':'Restaurant brand','cases.c2.desc':'Content strategy and on-location shoots: atmosphere, food, people. Organic growth with zero ad budget.',
     'cases.c3.title':'Clothing brand','cases.c3.desc':'A viral video from the new collection show: first-second hook plus edit rhythm synced to the track.',
+    'cases.disclaimer':'Result based on client-reported data for the stated period; not a guarantee of similar results.',
     'process.tag':'Process','process.title':'How a video <em>is born</em>','process.desc':'From brief to final files — a transparent process with no surprises.',
     'process.s1.title':'Brief & strategy','process.s1.desc':'A Zoom call: goals, audience, KPIs. We shape the concept and references for your brand.',
     'process.s2.title':'Script & hook','process.s2.desc':'A script with a captivating first second. Every detail agreed before filming.',
@@ -639,8 +773,16 @@ var T = {
     'pricing.p2.qty':'6–10 videos · Popular','pricing.p2.sub':'Everything in Start + 3 revisions + priority',
     'pricing.p3.qty':'11–20 videos','pricing.p3.sub':'Unlimited revisions + manager',
     'pricing.p4.qty':'20+ videos','pricing.p4.sub':'VIP · dedicated team · analytics',
+    'pricing.note':'Prices are per video at the corresponding package volume. Final cost and timelines are fixed in a contract/invoice before work starts. See the Refund Policy in the footer for payment terms.',
     'cta.title':'Ready to <em>start</em>?','cta.desc':'Let us jump on a Zoom call: examples, format and a plan for your budget.',
-    'cta.zoom':'Zoom call','cta.telegram':'Telegram','footer.rights':'All rights reserved'
+    'cta.zoom':'Zoom call','cta.telegram':'Telegram','footer.rights':'All rights reserved',
+    'footer.privacy':'Privacy Policy','footer.terms':'Terms of Use','footer.cookies':'Cookie Policy','footer.refund':'Refund Policy','footer.cookieSettings':'Cookie settings',
+    'footer.company':'[Legal entity name] · [registered address] · Reg. No.: [fill in] · contact@northlightstudio.example · [phone]',
+    'cookie.text':'We only use technically necessary elements for the site to work (fonts, video, etc. load from third parties: Google Fonts, Unsplash, Mixkit, Zoom, Telegram). No analytics or advertising cookies are set without your consent. See the Cookie Policy for details.',
+    'cookie.necessary.title':'Necessary','cookie.necessary.desc':'Always active — required for the site to function.',
+    'cookie.analytics.title':'Analytics','cookie.analytics.desc':'Not currently used on this site. Toggle reserved for future use.',
+    'cookie.acceptAll':'Accept all','cookie.rejectAll':'Necessary only','cookie.customize':'Customize',
+    'legal.privacy.h':'Privacy Policy'
   }
 };
 var curLang = 'ru';
@@ -732,6 +874,7 @@ function openSite(){
     var p = heroVideo.play();
     if (p && p.catch) p.catch(function(){});
   }
+  maybeShowCookieBar();
 }
 function onLogoReady(){
   logoReady = true;
@@ -747,6 +890,80 @@ if (preImg){
 } else { logoReady = true; }
 setTimeout(openSite, MIN_SHOW);
 setTimeout(openSite, CAP);
+
+/* ============ COOKIE CONSENT ============ */
+var COOKIE_KEY = 'nl_cookie_consent_v1';
+var cookieBar = document.getElementById('cookieBar');
+var cookieSettingsPanel = document.getElementById('cookieSettingsPanel');
+var toggleAnalytics = document.getElementById('toggleAnalytics');
+
+function getConsent(){
+  try { return JSON.parse(localStorage.getItem(COOKIE_KEY)); } catch(e){ return null; }
+}
+function setConsent(obj){
+  try { localStorage.setItem(COOKIE_KEY, JSON.stringify(obj)); } catch(e){}
+  applyConsent(obj);
+}
+function applyConsent(obj){
+  // Точка расширения: если в будущем подключите аналитику (GA/Meta Pixel и т.п.),
+  // инициализируйте её здесь ТОЛЬКО при obj.analytics === true.
+  window.__nlConsent = obj;
+}
+function maybeShowCookieBar(){
+  var c = getConsent();
+  if (c){ applyConsent(c); return; }
+  cookieBar.classList.add('visible');
+}
+document.getElementById('cookieAcceptAll').addEventListener('click', function(){
+  toggleAnalytics.classList.add('on');
+  setConsent({ necessary:true, analytics:true, ts:Date.now() });
+  cookieBar.classList.remove('visible');
+});
+document.getElementById('cookieRejectAll').addEventListener('click', function(){
+  toggleAnalytics.classList.remove('on');
+  setConsent({ necessary:true, analytics:false, ts:Date.now() });
+  cookieBar.classList.remove('visible');
+});
+document.getElementById('cookieCustomize').addEventListener('click', function(){
+  cookieSettingsPanel.classList.toggle('open');
+});
+toggleAnalytics.addEventListener('click', function(){
+  var on = !toggleAnalytics.classList.contains('on');
+  toggleAnalytics.classList.toggle('on', on);
+  setConsent({ necessary:true, analytics:on, ts:Date.now() });
+});
+document.getElementById('cookieReopen').addEventListener('click', function(){
+  cookieBar.classList.add('visible');
+  cookieSettingsPanel.classList.add('open');
+  var c = getConsent();
+  if (c && c.analytics) toggleAnalytics.classList.add('on');
+});
+
+/* ============ LEGAL MODALS ============ */
+var legalMap = { privacy:'modalPrivacy', terms:'modalTerms', cookies:'modalCookies', refund:'modalRefund' };
+document.querySelectorAll('[data-legal]').forEach(function(el){
+  el.addEventListener('click', function(e){
+    e.preventDefault();
+    var id = legalMap[el.getAttribute('data-legal')];
+    var modal = document.getElementById(id);
+    if (modal) modal.classList.add('open');
+  });
+});
+document.querySelectorAll('.legal-modal [data-close]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    btn.closest('.legal-modal').classList.remove('open');
+  });
+});
+document.querySelectorAll('.legal-modal').forEach(function(modal){
+  modal.addEventListener('click', function(e){
+    if (e.target === modal) modal.classList.remove('open');
+  });
+});
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape'){
+    document.querySelectorAll('.legal-modal.open').forEach(function(m){ m.classList.remove('open'); });
+  }
+});
 
 /* пылинки */
 var dustCanvas = document.getElementById('dust');
